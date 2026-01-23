@@ -1,6 +1,6 @@
 // deno-lint-ignore-file
-import { cards } from "@/cards.ts";
-import { gameState } from "@/types/gameState.ts";
+import { cards } from "@/cards";
+import { gameState } from "@/types/gameState";
 
 const JOKER_STRENGTH = 100;
 

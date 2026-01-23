@@ -3,11 +3,11 @@
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";
-import { cards, cards2svg } from "@/cards.ts";
-import { useSocketContext } from "@/context/SocketProvider.tsx";
+import { cards, cards2svg } from "@/cards";
+import { useSocketContext } from "@/context/SocketProvider";
 import { Button } from "@heroui/react";
-import { isValidMove } from "@/lib/validateCardPlay.ts";
-import { gameState } from "@/types/gameState.ts";
+import { isValidMove } from "@/lib/validateCardPlay";
+import { gameState } from "@/types/gameState";
 
 export type HandFanProps = {
     hand: Array<number>;
@@ -38,6 +38,7 @@ export default function HandFan({ hand, roomId, gameState, showActions = false, 
 
     useEffect(() => {
         // Reset selection if hand changes (e.g., after play)
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         setSelected([]);
         onSelectionChange?.([]);
     }, [hand, onSelectionChange]);

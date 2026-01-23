@@ -1,11 +1,11 @@
 "use client";
 
 import { useMemo } from "react";
-import { sortHandDaifugo } from "@/lib/sortHandDaifugo.ts";
-import { gameState, playerData } from "@/types/gameState.ts";
-import HandFan from "@/components/HandFan.tsx";
-import TableCards from "@/components/TableCards.tsx";
-import PlayersInfo from "@/components/PlayersInfo.tsx";
+import { sortHandDaifugo } from "@/lib/sortHandDaifugo";
+import { gameState, playerData } from "@/types/gameState";
+import HandFan from "@/components/HandFan";
+import TableCards from "@/components/TableCards";
+import PlayersInfo from "@/components/PlayersInfo";
 
 export default function Game({ playerData, gameState, roomId, playMessage }: { playerData: playerData; gameState: gameState, roomId: string, playMessage: string | null }) {
     const hand: Array<number> = useMemo(() => sortHandDaifugo(playerData.hand), [playerData.hand]);

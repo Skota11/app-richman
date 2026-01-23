@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 import type { ReactNode } from 'react'
-import { createSocket, getSocket } from '../lib/socket'
+import { createSocket } from '../lib/socket'
 import type { Socket } from 'socket.io-client'
 
 type SocketContextValue = {
@@ -24,7 +24,7 @@ export const SocketProvider = ({ children, token }: { children: ReactNode; token
     // 接続イベントのハンドリング
     const onConnect = () => setConnected(true)
     const onDisconnect = () => setConnected(false)
-    const onConnectError = (err: any) => {
+    const onConnectError = (err: Error | Record<string, unknown>) => {
       console.error('socket connect error', err)
     }
 

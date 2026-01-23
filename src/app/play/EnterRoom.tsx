@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
-import { roomsState } from "@/types/gameState.ts";
-import { Button, Card, CardBody, CardHeader, CircularProgress, Divider, Skeleton } from "@heroui/react";
+import { roomsState } from "@/types/gameState";
+import { Button, Card, CardBody, CardHeader, Divider, Skeleton } from "@heroui/react";
 import { nanoid } from "nanoid";
 import { IoMdRefresh } from "react-icons/io";
 import { FaPlus } from "react-icons/fa";
@@ -27,7 +27,8 @@ export default function EnterRoom({ setRoomId }: { setRoomId: (roomId: string) =
         setRoomId(newRoomId);
     }
     useEffect(() => {
-        getRooms();
+        // eslint-disable-next-line react-hooks/set-state-in-effect
+        void getRooms();
     }, []);
     return (
         <div className="">

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { gameState } from "../types/gameState.ts";
+import { gameState } from "@/types/gameState";
 
 export type PlayersInfoProps = {
     players: Array<{ id: string; data: { username: string; points: number } }>;

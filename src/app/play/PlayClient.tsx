@@ -2,9 +2,9 @@
 import { useState, useEffect } from 'react'
 import { useSocketContext } from '@/context/SocketProvider'
 import EnterRoom from './EnterRoom';
-import { gameState, playerData } from '@/types/gameState.ts';
-import WaitingRoom from "./WaitingRoom.tsx";
-import Game from "./Game.tsx";
+import { gameState, playerData } from '@/types/gameState';
+import WaitingRoom from "./WaitingRoom";
+import Game from "./Game";
 
 export default function PlayClient({ username }: { username: string }) {
     const { socket, connected } = useSocketContext()
@@ -17,17 +17,17 @@ export default function PlayClient({ username }: { username: string }) {
         // ルームに参加
         socket.emit('join-room', { username, roomId })
         // イベントリスナーの設定
-        const handleRoomJoined = (data: any) => {
+        const handleRoomJoined = (data: Record<string, unknown>) => {
             console.log('Room joined:', data)
         }
-        const handlePlayerJoined = (data: any) => {
+        const handlePlayerJoined = (data: Record<string, unknown>) => {
             console.log('Player joined:', data)
         }
-        const handleGameState = (data: any) => {
+        const handleGameState = (data: gameState) => {
             console.log('Game state updated:', data)
             setGameState(data);
         }
-        const handleMyPlayerData = (data: any) => {
+        const handleMyPlayerData = (data: playerData) => {
             console.log('My player data:', data)
             setPlayerData(data);
         }
