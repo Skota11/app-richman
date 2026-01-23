@@ -1,4 +1,4 @@
-import { cards } from "@/cards.ts";
+import { cards } from "@/cards";
 
 /**
  * Sort cards by Daifugo (Richman) strength order: 3 < 4 < ... < K < A < 2 < Joker.

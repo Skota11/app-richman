@@ -1,12 +1,12 @@
 import { gameState } from "@/types/gameState";
-import { CircularProgress, User , Button, Card, CardHeader, CardBody } from "@heroui/react";
-import { useSocketContext } from "@/context/SocketProvider.tsx";
+import { CircularProgress, User, Button, Card, CardHeader, CardBody } from "@heroui/react";
+import { useSocketContext } from "@/context/SocketProvider";
 
-export default function WaitingRoom({gameState , roomId} : {gameState : gameState, roomId: string}) {
+export default function WaitingRoom({ gameState, roomId }: { gameState: gameState, roomId: string }) {
     const { socket } = useSocketContext()
     const isStartDisabled = gameState.players.length <= 2;
     const handleStart = () => {
-        if(!socket) return;
+        if (!socket) return;
         socket.emit('start-game', { roomId });
     }
     return (
@@ -14,7 +14,7 @@ export default function WaitingRoom({gameState , roomId} : {gameState : gameStat
             <div>
                 <h1 className="text-3xl font-bold">{roomId}</h1>
                 <div className="flex gap-x-2 items-center my-2">
-                    <CircularProgress size="sm"/>
+                    <CircularProgress size="sm" />
                     <p>ゲーム開始を待っています...</p>
                 </div>
                 <div className="my-4">

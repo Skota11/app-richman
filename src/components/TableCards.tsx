@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
-import { cards, cards2svg } from "@/cards.ts";
+import { cards, cards2svg } from "@/cards";
 
 export type TableCardsProps = {
     cardsOnTable: Array<number>;
