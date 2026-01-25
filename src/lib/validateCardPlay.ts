@@ -95,8 +95,8 @@ export function isValidMove(selectedCards: Array<number>, cardsOnTable: Array<nu
                 const tableNumbers = cardsOnTable.map((id) => cards[id].number);
                 const isTableSet = tableNumbers.every((num) => num === tableNumbers[0] || num === 0);
                 const isTableRun = isValidRun(cardsOnTable, isKakumei);
-
-                const tableSorted3 = [...tableNumbers].sort((a, b) => a - b);
+                console.log(isTableRun, isTableSet, tableNumbers);
+                const tableSorted3 = [...cardsOnTable].sort((a, b) => a - b);
                 if (isSet && isTableSet) {
                     //両方セットの場合
                     return getStrength(sortedSelected3[0], isKakumei) > getStrength(tableSorted3[0], isKakumei);
@@ -122,7 +122,7 @@ export function isValidMove(selectedCards: Array<number>, cardsOnTable: Array<nu
             if (cardsOnTable.length === 4) {
                 const tableNumbers4 = cardsOnTable.map((id) => cards[id].number);
                 const isTableSet4 = tableNumbers4.every((num) => num === tableNumbers4[0] || num === 0);
-                const tableSorted4 = [...tableNumbers4].sort((a, b) => a - b);
+                const tableSorted4 = [...cardsOnTable].sort((a, b) => a - b);
                 if (isSet4 && isTableSet4) {
                     //両方セットの場合
                     return getStrength(sortedSelected4[0], isKakumei) > getStrength(tableSorted4[0], isKakumei);
