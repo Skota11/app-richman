@@ -55,6 +55,9 @@ export function isValidMove(selectedCards: Array<number>, cardsOnTable: Array<nu
                 if (selectedCard.number == 0) {
                     return true;
                 }
+                if (gameState.rules.spade3 && selectedCard.suit === "spade" && selectedCard.number === 3 && cards[cardsOnTable[0]].suit == "joker") {
+                    return true;
+                }
                 return getStrength(selectedCards[0], isKakumei) > getStrength(cardsOnTable[0], isKakumei);
             }
             break;
