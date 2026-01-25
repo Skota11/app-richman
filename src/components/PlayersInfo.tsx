@@ -19,6 +19,11 @@ export default function PlayersInfo({ gameState }: { gameState: gameState }) {
                 const isCurrentTurn = index === gameState.currentTurnPosition;
                 const playerInfo = gameState.players.find(p => p.id === player.id);
                 if (!playerInfo) return null;
+                let rank = playerInfo.data.rank ? "・平民" : "";
+                if (playerInfo.data.rank === 1) rank = " ・大富豪";
+                else if (playerInfo.data.rank === 2) rank = " ・富豪";
+                else if (playerInfo.data.rank === gameState.players.length - 1) rank = " ・貧民";
+                else if (playerInfo.data.rank === gameState.players.length) rank = " ・大貧民";
                 return (
                     <motion.div
                         key={player.id}
@@ -30,12 +35,12 @@ export default function PlayersInfo({ gameState }: { gameState: gameState }) {
                             : "border border-slate-200 bg-slate-50"
                             }`}
                     >
-                        <p className="text-xs font-semibold text-slate-800 truncate">{playerInfo.data.username}</p>
-                        {player.data.count !== 0 && (<>
+                        <p className="text-xs font-semibold text-slate-800 truncate">{playerInfo.data.username}{rank}</p>
+                        {(player.data.count !== 0 && player.data.order == undefined) && (
                             <p className={`text-sm font-medium ${isCurrentTurn ? "text-amber-700" : "text-slate-600"}`}>
                                 {player.data.count} 枚
                             </p>
-                        </>)}
+                        )}
                         {player.data.order !== undefined && (
                             <p className="text-sm text-slate-500">{player.data.order} 抜け</p>
                         )}

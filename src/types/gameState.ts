@@ -1,7 +1,7 @@
 export interface gameState {
-    players: [{ id: string; data: { username: string; points: number } }];
+    players: [{ id: string; data: { username: string; points: number; rank?: number } }];
     playingPlayers: [{ id: string; data: { count: number, position: number, order?: number } }];
-    currentState: string;
+    currentState: "waiting" | "playing" | "exchange";
     currentTurnPosition: number;
     cardsOnTable: Array<number>;
     rules: {
@@ -23,4 +23,5 @@ export interface roomsState {
 export interface playerData {
     hand: Array<number>;
     position: number;
+    rank?: number;
 }

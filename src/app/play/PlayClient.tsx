@@ -5,6 +5,7 @@ import EnterRoom from './EnterRoom';
 import { gameState, playerData } from '@/types/gameState';
 import WaitingRoom from "./WaitingRoom";
 import Game from "./Game";
+import Exchange from './Exchange';
 
 export default function PlayClient({ username }: { username: string }) {
     const { socket, connected } = useSocketContext()
@@ -65,6 +66,9 @@ export default function PlayClient({ username }: { username: string }) {
         <div>
             {gameState.currentState === "waiting" && (
                 <WaitingRoom gameState={gameState} roomId={roomId} />
+            )}
+            {gameState.currentState === "exchange" && (
+                <Exchange playerData={playerData!} gameState={gameState} roomId={roomId} />
             )}
             {gameState.currentState === "playing" && (
                 <Game playerData={playerData!} gameState={gameState} roomId={roomId} playMessage={playMessage} />

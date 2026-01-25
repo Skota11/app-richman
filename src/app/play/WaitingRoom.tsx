@@ -27,11 +27,18 @@ export default function WaitingRoom({ gameState, roomId }: { gameState: gameStat
                             <h1>参加者一覧</h1>
                         </CardHeader>
                         <CardBody className="flex flex-col gap-y-2">
-                            {gameState.players.map((player) => (
-                                <div key={player.id}>
-                                    <User name={player.data.username} description={`${player.data.points} 点`} />
-                                </div>
-                            ))}
+                            {gameState.players.map((player) => {
+                                let rank = player.data.rank ? "・平民" : "";
+                                if (player.data.rank === 1) rank = " ・大富豪";
+                                else if (player.data.rank === 2) rank = " ・富豪";
+                                else if (player.data.rank === gameState.players.length - 1) rank = " ・貧民";
+                                else if (player.data.rank === gameState.players.length) rank = " ・大貧民";
+                                return (
+                                    <div key={player.id}>
+                                        <User name={player.data.username} description={`${player.data.points} 点${rank}`} />
+                                    </div>
+                                )
+                            })}
                         </CardBody>
                     </Card>
                     <Card className="max-w-xl">
