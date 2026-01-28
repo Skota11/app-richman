@@ -4,7 +4,7 @@ import { gameState } from "@/types/gameState";
 
 const JOKER_STRENGTH = 100;
 
-function getStrength(cardId: number, isKakumei: boolean): number {
+export function getStrength(cardId: number, isKakumei: boolean): number {
     const card = cards[cardId];
     if (!card) return -1;
     if (card.number == 0) {
